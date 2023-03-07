@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tornado Alarm</title>
+    <style>
+      body {
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        margin: 10px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      button:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tornado Alarm</h1>
+    <button id="play-button">Play</button>
+    <button id="pause-button" disabled>Pause</button>
+    <button id="stop-button" disabled>Stop</button>
+
+    <script>
+      const audio = new Audio('https://www.cityoftulsa.org/media/2178/tornado.mp3');
+      const playButton = document.getElementById('play-button');
+      const pauseButton = document.getElementById('pause-button');
+      const stopButton = document.getElementById('stop-button');
+
+      playButton.addEventListener('click', () => {
+        audio.play().then(() => {
+          playButton.disabled = true;
+          pauseButton.disabled = false;
+          stopButton.disabled = false;
+        }).catch((err) => {
+          console.error('Failed to play sound:', err);
+        });
+      });
+
+      pauseButton.addEventListener('click', () => {
+        audio.pause();
+        playButton.disabled = false;
+        pauseButton.disabled = true;
+      });
+
+      stopButton.addEventListener('click', () => {
+        audio.pause();
+        audio.currentTime = 0;
+        playButton.disabled = false;
+        pauseButton.disabled = true;
+        stopButton.disabled = true;
+      });
+    </script>
+  </body>
+</html>
