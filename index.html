@@ -5,6 +5,19 @@
     <title>Tornado Alarm</title>
     <!-- Add Bootstrap stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <style>
+      /* Custom styles for smaller screens */
+      @media (max-width: 576px) {
+        .btn-group {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .btn-group button {
+          margin-bottom: 10px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -15,9 +28,11 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-8 col-md-4 text-center">
-          <button id="play-button" class="btn btn-lg btn-success">Play</button>
-          <button id="pause-button" class="btn btn-lg btn-secondary" disabled>Pause</button>
-          <button id="stop-button" class="btn btn-lg btn-danger" disabled>Stop</button>
+          <div class="btn-group">
+            <button id="play-button" class="btn btn-lg btn-success">Play</button>
+            <button id="pause-button" class="btn btn-lg btn-secondary" disabled>Pause</button>
+            <button id="stop-button" class="btn btn-lg btn-danger" disabled>Stop</button>
+          </div>
         </div>
       </div>
     </div>
